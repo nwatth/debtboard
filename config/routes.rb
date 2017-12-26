@@ -10,4 +10,10 @@ Rails.application.routes.draw do
   end
 
   resources :authentications, only: [:destroy]
+
+  namespace :admin do
+    root to: "users#index"
+
+    resources :users
+  end
 end

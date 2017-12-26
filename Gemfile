@@ -23,6 +23,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'devise'
 # User Authentication with Facebook
 gem 'omniauth-facebook'
+# Powerful admin dashboards
+gem "administrate"
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
