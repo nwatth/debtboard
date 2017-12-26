@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171226161532) do
+ActiveRecord::Schema.define(version: 20171226164504) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,17 @@ ActiveRecord::Schema.define(version: 20171226161532) do
     t.index ["user_id"], name: "index_charges_on_user_id"
   end
 
+  create_table "transfers", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "collector_id"
+    t.date "captured_on"
+    t.decimal "amount", precision: 8, scale: 2
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["collector_id"], name: "index_transfers_on_collector_id"
+    t.index ["user_id"], name: "index_transfers_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -59,4 +70,6 @@ ActiveRecord::Schema.define(version: 20171226161532) do
   add_foreign_key "charges", "cards"
   add_foreign_key "charges", "users"
   add_foreign_key "charges", "users", column: "debtor_id"
+  add_foreign_key "transfers", "users"
+  add_foreign_key "transfers", "users", column: "collector_id"
 end

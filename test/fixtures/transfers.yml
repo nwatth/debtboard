@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  collector: one
+  captured_on: 2017-12-26
+  amount: 
+  amount: 
+
+two:
+  user: two
+  collector: two
+  captured_on: 2017-12-26
+  amount: 
+  amount: 

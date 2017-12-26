@@ -7,7 +7,9 @@ class User < ApplicationRecord
 
   has_many :cards
   has_many :charges
-  has_many :debts, class_name: 'Charge', foreign_key: 'debtor_id'
+  has_many :transfers
+  has_many :debts,    class_name: 'Charge',     foreign_key: 'debtor_id'
+  has_many :collects, class_name: 'transfers',  foreign_key: 'collector_id'
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
