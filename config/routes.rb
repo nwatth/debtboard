@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   authenticated :user do
-    root to: "home#index"
+    root to: 'home#index', as: 'authenticated_root'
   end
 
   devise_scope :user do
@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :authentications, only: [:destroy]
 
   namespace :admin do
-    root to: "users#index"
+    root to: 'users#index'
 
     resources :users
   end
