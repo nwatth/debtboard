@@ -12,7 +12,7 @@ class ChargeDashboard < Administrate::BaseDashboard
     debtor: Field::BelongsTo.with_options(class_name: "User"),
     card: Field::BelongsTo,
     id: Field::Number,
-    captured_on: Field::DateTime,
+    captured_on: DateField,
     amount: Field::String.with_options(searchable: false),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -24,6 +24,7 @@ class ChargeDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
+    :captured_on,
     :user,
     :debtor,
     :card,

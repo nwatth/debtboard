@@ -11,7 +11,7 @@ class TransferDashboard < Administrate::BaseDashboard
     user: Field::BelongsTo,
     collector: Field::BelongsTo.with_options(class_name: "User"),
     id: Field::Number,
-    captured_on: Field::DateTime,
+    captured_on: DateField,
     amount: Field::String.with_options(searchable: false),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
